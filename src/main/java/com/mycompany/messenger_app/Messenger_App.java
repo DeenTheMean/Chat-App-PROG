@@ -28,40 +28,54 @@ public class Messenger_App {
 
             switch(selection){
                 case 1 -> {
-                    System.out.print("Enter a username: ");
+                    System.out.print("\nEnter a username: ");
                     String username = scanner.nextLine();
                     
                     if(username.length() <= 5 && username.contains("_")){
                         System.out.println("Username successfully captured.");
                     }else{
-                        System.out.println("Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.");
+                        System.out.println("Username is not correctly formatted; please ensure that " +
+                                           "your username contains an underscore and is no more than " +
+                                           "five characters in length.");
                         break;
                     }
                          
                     
-                    System.out.print("Enter a password: ");
+                    System.out.print("\nEnter a password: ");
                     String password = scanner.nextLine();
                     
-                    if(password.length() >= 8 && password.matches(".*[A-Z].*") && password.matches(".*//d.*") && password.matches(".*(!@#$%^&*_,.-+=|;:'/<>?).*")){
+                    if(password.length() >= 8 && password.matches(".*[A-Z].*") &&
+                       password.matches(".*\\d.*") && password.matches(".*[!@#$%^&*(),.?\":()|<>].*")){
                         System.out.println("Password successfully captured.");
                     }else{
-                        System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
+                        System.out.println("Password is not correctly formatted; please ensure that the " +
+                                           "password contains at least eight characters, a capital letter, " +
+                                           "a number, and a special character.");
                         break;
                     }
                        
                     
-                    System.out.print("Enter your cell phone number (+27XXXXXXXXX): ");
+                    System.out.print("\nEnter your cell phone number (+27XXXXXXXXX): ");
                     String phoneNumber = scanner.nextLine();
                                         
-                    if(phoneNumber.matches("\\+27[6-8]\\{8}")){
+                    if(phoneNumber.matches("\\+27[6-8]\\d{8}")){
                         System.out.println("Cell phone number successfully added.");
                     }else{
-                        System.out.println("Cell phone number cell phone number incorrectly formatted or does not contain international code.");
+                        System.out.println("Cell phone number cell phone number incorrectly formatted " +
+                                           "or does not contain international code.");
+                        break;
                     }
                     
                     //if(user.stream().anyMatch(u -> u.getUsername().equals(username))){
-                        
+                    //  System.out.println("Username already exists. Please choose a different username.");
                     //}
+                    
+                    //user.add(new Login(username, password, phoneNumber));
+                    System.out.println("\nRegistered successfully!");
+                    
+                    System.out.println("\nWelcome, " + username + "! You can now log in with your username and password.");
+                    System.out.println("Redirecting to login page...\n");
+                        
                 }
                 case 2 -> {
                     System.out.println("Logged in");
