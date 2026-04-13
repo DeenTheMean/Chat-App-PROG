@@ -7,8 +7,12 @@ public class Messenger_App {
 
     public static void main(String[] args) {
         
+        
+        // ADD COMMENTS!!!!!!!!
+        
+        
         Scanner scanner = new Scanner(System.in);
-        ArrayList<User> user = new ArrayList<>();
+        ArrayList<Login> user = new ArrayList<>();
         boolean running = true;
         
         System.out.println("============ CHAT APP ============");
@@ -24,16 +28,40 @@ public class Messenger_App {
 
             switch(selection){
                 case 1 -> {
-                    System.out.println("Enter your username: ");
+                    System.out.print("Enter a username: ");
                     String username = scanner.nextLine();
                     
                     if(username.length() <= 5 && username.contains("_")){
                         System.out.println("Username successfully captured.");
                     }else{
                         System.out.println("Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.");
+                        break;
                     }
                          
-                   System.out.println(username);         
+                    
+                    System.out.print("Enter a password: ");
+                    String password = scanner.nextLine();
+                    
+                    if(password.length() >= 8 && password.matches(".*[A-Z].*") && password.matches(".*//d.*") && password.matches(".*(!@#$%^&*_,.-+=|;:'/<>?).*")){
+                        System.out.println("Password successfully captured.");
+                    }else{
+                        System.out.println("Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
+                        break;
+                    }
+                       
+                    
+                    System.out.print("Enter your cell phone number (+27XXXXXXXXX): ");
+                    String phoneNumber = scanner.nextLine();
+                                        
+                    if(phoneNumber.matches("\\+27[6-8]\\{8}")){
+                        System.out.println("Cell phone number successfully added.");
+                    }else{
+                        System.out.println("Cell phone number cell phone number incorrectly formatted or does not contain international code.");
+                    }
+                    
+                    //if(user.stream().anyMatch(u -> u.getUsername().equals(username))){
+                        
+                    //}
                 }
                 case 2 -> {
                     System.out.println("Logged in");
@@ -47,7 +75,7 @@ public class Messenger_App {
         }
     }
     
-    class User {
+    class Login {
         public String username;
         public String password;
         public String phoneNumber;
